@@ -1,7 +1,5 @@
 import streamlit as st
 from fastai.vision.all import *
-from pathlib import Path
-import pathlib
 import os
 import matplotlib.pyplot as plt
 import numpy as np
