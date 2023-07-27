@@ -7,8 +7,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 import PIL
 
-temp = pathlib.PosixPath
-pathlib.PosixPath = pathlib.WindowsPath
+#temp = pathlib.PosixPath
+#pathlib.PosixPath = pathlib.WindowsPath
 
 def load_model(model_path):
     model_path = Path(model_path)
