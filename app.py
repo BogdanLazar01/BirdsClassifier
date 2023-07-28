@@ -90,7 +90,7 @@ def main():
         # Load and preprocess the data
      #   data_path = "bird_images"  # Replace with the path to your dataset
       #  data = ImageDataLoaders.from_folder(data_path, valid_pct=0.2, item_tfms=Resize(460),
-                                            batch_tfms=[], num_workers=4)
+      #                                      batch_tfms=[], num_workers=4)
 
         # Choose a pre-trained model (e.g., resnet34)
        # pretrained_model = models.resnet34
