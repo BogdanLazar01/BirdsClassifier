@@ -1,6 +1,6 @@
 import streamlit as st
 from fastai.vision.all import *
-from pathlib import PurePath
+from pathlib import Path
 import pathlib
 import os
 import matplotlib.pyplot as plt
@@ -12,7 +12,7 @@ temp = pathlib.PosixPath
 pathlib.PosixPath = pathlib.WindowsPath
 
 def load_model(model_path):
-    model_path = io.BytesIO(PurePath(model_path))
+    model_path = Path(model_path)
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     learn = torch.load(model_path, map_location=device)
     learn.model = learn.model.to(device)
