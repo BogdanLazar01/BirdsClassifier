@@ -5,7 +5,6 @@ import pathlib
 import os
 import matplotlib.pyplot as plt
 import numpy as np
-import PIL
 
 def load_model(model_path):
     model_path = PosixPath(model_path)
