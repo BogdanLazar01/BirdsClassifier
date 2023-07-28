@@ -8,9 +8,6 @@ import numpy as np
 import PIL
 import io
 
-temp = pathlib.PurePosixPath
-pathlib.PureWindowsPath = pathlib.PurePosixPath 
-
 def load_model(model_path):
     model_path = PurePath(model_path)
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
