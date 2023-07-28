@@ -6,17 +6,11 @@ import os
 import matplotlib.pyplot as plt
 import numpy as np
 import PIL
-import io
 
 def load_model(model_path):
     model_path = PosixPath(model_path)
-    device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-
-    # Load the model into a seekable buffer
-    with open(model_path, 'rb') as f:
-        buffer = io.BytesIO(f.read())
-    
-    learn = torch.load(buffer, map_location=device)
+    device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')    
+    learn = torch.load(model_path, map_location=device)
     learn.model = learn.model.to(device)
     learn.dls.device = device
     return learn
