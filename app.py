@@ -8,7 +8,7 @@ import numpy as np
 import PIL
 import io
 
-temp = pathlib.PureWindowsPath
+temp = pathlib.PurePosixPath
 pathlib.PureWindowsPath = pathlib.PurePosixPath 
 
 def load_model(model_path):
