@@ -19,7 +19,7 @@ def load_model(model_path):
     with open(model_path, 'rb') as f:
         buffer = io.BytesIO(f.read())
     
-    learn = torch.load(model_path, map_location=device)
+    learn = torch.load(buffer, map_location=device)
     learn.model = learn.model.to(device)
     learn.dls.device = device
     return learn
