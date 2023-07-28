@@ -14,6 +14,11 @@ pathlib.PureWindowsPath = pathlib.PurePosixPath
 def load_model(model_path):
     model_path = PurePath(model_path)
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+
+    # Load the model into a seekable buffer
+    with open(model_path, 'rb') as f:
+        buffer = io.BytesIO(f.read())
+    
     learn = torch.load(model_path, map_location=device)
     learn.model = learn.model.to(device)
     learn.dls.device = device
