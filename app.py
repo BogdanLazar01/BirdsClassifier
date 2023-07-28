@@ -9,7 +9,7 @@ import PIL
 import io
 
 temp = pathlib.PosixPath
-pathlib.PosixPath = pathlib.WindowsPath
+pathlib.PosixPath = pathlib.PureWindowsPath
 
 def load_model(model_path):
     model_path = Path(model_path)
