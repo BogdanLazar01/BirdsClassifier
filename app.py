@@ -1,6 +1,6 @@
 import streamlit as st
 from fastai.vision.all import *
-from pathlib import PurePath
+from pathlib import PosixPath
 import pathlib
 import os
 import matplotlib.pyplot as plt
@@ -9,7 +9,7 @@ import PIL
 import io
 
 def load_model(model_path):
-    model_path = PurePath(model_path)
+    model_path = PosixPath(model_path)
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
     # Load the model into a seekable buffer
@@ -82,12 +82,12 @@ def main():
 
     # Load the trained model if in Test or Explore mode
     if mode in ["Explore", "Test"]:
-        model_path = "./bird_classifier.pkl"  # Replace with the path to your saved model
+        model_path = "bird_classifier.pkl"  # Replace with the path to your saved model
         model = load_model(model_path)
 
     if mode == "Explore":
         # Explore the dataset used to train the model
-        data_path = "./bird_images/train"  # Replace with the path to your dataset
+        data_path = "bird_images/train"  # Replace with the path to your dataset
         perform_eda(data_path)
 
     elif mode == "Train":
@@ -95,7 +95,7 @@ def main():
         st.header("Train a New Classifier")
 
         # Load and preprocess the data
-        data_path = "./bird_images"  # Replace with the path to your dataset
+        data_path = "bird_images"  # Replace with the path to your dataset
         data = ImageDataLoaders.from_folder(data_path, valid_pct=0.2, item_tfms=Resize(460),
                                             batch_tfms=[], num_workers=4)
 
