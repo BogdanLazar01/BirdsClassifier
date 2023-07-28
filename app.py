@@ -83,14 +83,39 @@ def main():
         data_path = "bird_images/train"  # Replace with the path to your dataset
         perform_eda(data_path)
 
+    #elif mode == "Train":
+        # Train a new image classifier
+    #    st.header("Train a New Classifier")
+
+        # Load and preprocess the data
+     #   data_path = "bird_images"  # Replace with the path to your dataset
+      #  data = ImageDataLoaders.from_folder(data_path, valid_pct=0.2, item_tfms=Resize(460),
+                                            batch_tfms=[], num_workers=4)
+
+        # Choose a pre-trained model (e.g., resnet34)
+       # pretrained_model = models.resnet34
+
+        # Create the learner object
+        #learn = cnn_learner(data, pretrained_model, metrics=accuracy)
+
+        # Train the model with custom hyperparameters
+        #epochs = st.slider("Number of epochs", 1, 20, 5)
+        #learn.fine_tune(epochs)
+
+        # Save the trained model
+        #save_model = st.button("Save Trained Model")
+        #if save_model:
+         #   learn.export("trained_model.pkl")
+          #  st.success("Trained model saved successfully!")
+
     elif mode == "Train":
         # Train a new image classifier
         st.header("Train a New Classifier")
 
         # Load and preprocess the data
-        data_path = "bird_images"  # Replace with the path to your dataset
+        data_path = "./bird_images"  # Replace with the path to your dataset
         data = ImageDataLoaders.from_folder(data_path, valid_pct=0.2, item_tfms=Resize(460),
-                                            batch_tfms=[], num_workers=4)
+                                            batch_tfms=[], num_workers=0)  # Set num_workers to 0
 
         # Choose a pre-trained model (e.g., resnet34)
         pretrained_model = models.resnet34
@@ -107,7 +132,7 @@ def main():
         if save_model:
             learn.export("trained_model.pkl")
             st.success("Trained model saved successfully!")
-
+    
     elif mode == "Test":
         # Test a pre-saved model by uploading an image
         st.header("Test Pre-saved Model")
