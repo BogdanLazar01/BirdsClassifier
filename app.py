@@ -6,12 +6,13 @@ import os
 import matplotlib.pyplot as plt
 import numpy as np
 import PIL
+import io
 
 temp = pathlib.PosixPath
 pathlib.PosixPath = pathlib.WindowsPath
 
 def load_model(model_path):
-    model_path = PurePath(model_path)
+    model_path = io.BytesIO(PurePath(model_path))
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     learn = torch.load(model_path, map_location=device)
     learn.model = learn.model.to(device)
